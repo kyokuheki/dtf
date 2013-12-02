@@ -14,8 +14,14 @@ default_pattern = (
     '._*',
 )
 
-dirname = os.path.dirname(os.path.abspath(__file__))
-config_filename = os.path.join(dirname, '.dtf.conf')
+# modified by kyokuheki: change target directory to current directory
+dirname = os.getcwd()
+# dirname = os.path.dirname(os.path.abspath(__file__))
+
+# modified by kyokuheki: locate config file in home directory
+home = os.environ['HOME']
+config_filename = os.path.join(dirname, home + '/.dtf.conf')
+# config_filename = os.path.join(dirname, '.dtf.conf')
 
 def run(mode):
 
@@ -182,6 +188,12 @@ def main():
             print 'Usage: # python %s [del] [pattern]' % argv[0]
             quit()
         del_pattern(argv[2])
+
+# added by kyokuheki: show target directory and confdir
+    if argv[1] == 'dir':
+        print 'target directory = ' + dirname
+        print 'config file = ' + config_filename
+        return
 
 
 if __name__ == '__main__':
