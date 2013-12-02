@@ -11,6 +11,7 @@ default_pattern = (
     '.DS_Store',
     '__MACOSX',
     '.AppleDouble',
+    '.AppleDesktop',
     '._*',
 )
 
